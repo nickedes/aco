@@ -12,6 +12,7 @@
 from decimal import *
 from random import randint
 from math import floor
+from functions import *
 
 # Set precision to 20
 getcontext().prec = 20
@@ -26,29 +27,20 @@ print u
 print b
 
 # Iterate over Chaotic Logistic Map
-for i in range(50):
-    x = u*x*(1-x)
-
+x = chaotic(x, u, 50)
 print x
 
 # Iterate over Tent Map
-for i in range(50):
-    if 0 < x and x <= b:
-        x = x/b
-    elif b < x and x < 1:
-        x = (1-x)/(1-b)
-    else:
-        print "Something wrong at Tent Map"
-
+x = tent(x,b,50)
 print x
 
-s = []
-count = 0
-while len(s) != 255:
-    n = randint(0,255)
-    n = int(floor(n*x))
-    if n not in s:
-        count += 1
-        print count
-        print s
-        s.append(n)
+##s = []
+##count = 0
+##while len(s) != 255:
+##    n = randint(0,255)
+##    n = int(floor(n*x))
+##    if n not in s:
+##        count += 1
+##        print count
+##        print s
+##        s.append(n)
