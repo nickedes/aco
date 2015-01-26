@@ -10,6 +10,8 @@
 
 
 from decimal import *
+from random import randint
+from math import floor
 
 # Set precision to 20
 getcontext().prec = 20
@@ -40,3 +42,13 @@ for i in range(50):
 
 print x
 
+s = []
+count = 0
+while len(s) != 255:
+    n = randint(0,255)
+    n = int(floor(n*x))
+    if n not in s:
+        count += 1
+        print count
+        print s
+        s.append(n)
