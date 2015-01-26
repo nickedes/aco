@@ -29,4 +29,13 @@ for i in range(256):
 
 print x
 
+# Iterate over Tent Map
+for i in range(256):
+    if 0 < x and x <= b:
+        x = x/b
+    elif b < x and x < 1:
+        x = (1-x)/(1-b)
+    else:
+        print "Something wrong at Tent Map"
 
+print x
