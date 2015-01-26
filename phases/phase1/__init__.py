@@ -24,13 +24,13 @@ print u
 print b
 
 # Iterate over Chaotic Logistic Map
-for i in range(256):
+for i in range(50):
     x = u*x*(1-x)
 
 print x
 
 # Iterate over Tent Map
-for i in range(256):
+for i in range(50):
     if 0 < x and x <= b:
         x = x/b
     elif b < x and x < 1:
@@ -39,3 +39,4 @@ for i in range(256):
         print "Something wrong at Tent Map"
 
 print x
+
