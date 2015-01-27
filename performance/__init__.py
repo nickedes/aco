@@ -7,12 +7,13 @@ def fwt(f):
     """
     wf = []
     for x in f:
+        print len(f)
         if x == 0:
             wf.append(1)
         else: # Assume a proper truth table of only 1 or 0 entries
             wf.append(-1)
-    k = len(f) # k = 2^n
-    n = int(log(k, 2))
+    k = 256
+    n = 8
     sw = 1
     bs = k - 1
     while True:
@@ -22,6 +23,7 @@ def fwt(f):
             ri = li + sw
             for p in range(0, sw):
                 a = wf[li]
+                for i in range(0,len(wf)): print(i,wf[i]) # Comment
                 b = wf[ri]
                 wf[li] = a + b
                 wf[ri] = a - b
@@ -53,6 +55,7 @@ def nonlinearity(S):
                 if ((mask & (1 << i)) > 0) and ((S[x] & (1 << i)) > 0):
                     s = s ^ 1;
         f.append(s)
+    print(f) # Comment
     bfnl = bf_nonlinearity(f, n)
     if (bfnl < nl):
         nl = bfnl
