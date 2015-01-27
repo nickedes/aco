@@ -4,14 +4,15 @@
 # Tent Map: x[i+1] = x[i]/b,           0 < x[i] <=b
 #                    (1-x[i])/(1-b),   b < x[i] < 1
 # x0 = 15961/29589
-# u  = 3.99999999999999999999
-# b  = 0.49999999999999999999
+# u  = 3.99
+# b  = 0.49
 
 
 from decimal import *
 from random import randint
 from math import floor
 from functions import *
+from performance import *
 
 # Set precision to 20
 getcontext().prec = 20
@@ -25,6 +26,7 @@ print x
 print u
 print b
 
+# To counter Transient Effect
 # Iterate over Chaotic Logistic Map
 x = chaotic(x, u, 50)
 print x
@@ -36,13 +38,16 @@ print x
 # Generate S Box
 s = []
 while len(s) < 256:
-    x = chaotic(x, u, 13)
-    x = tent(x, b, 7)
-    #n = randint(0,255)
+    x = chaotic(x, u, 25)
+    x = tent(x, b, 14)
     n = int(floor(256*x))
     if n not in s:
-        print len(s)
-        print s
+        # print len(s)
+        # print s
         s.append(n)
-
+    
 print pretty(s)
+
+print is_bijective(s) 
+
+print nonlinearity(s)

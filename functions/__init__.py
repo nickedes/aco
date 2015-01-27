@@ -41,7 +41,7 @@ def pretty(sbox):
 
         # Entries
         for j in range(16):
-            p += '%02x' % sbox[i*15 + j] + '  '
+            p += '%03d' % sbox[i*15 + j] + '  '
         p += '\n'
 
     return p.upper()
