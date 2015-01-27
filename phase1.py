@@ -46,8 +46,8 @@ while len(s) < 256:
         # print s
         s.append(n)
     
-print pretty(s)
+print((pretty(s)))
 
-print is_bijective(s) 
+print((is_bijective(s))) 
 
-print nonlinearity(s)
+print((nonlinearity(s)))
