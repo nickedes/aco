@@ -7,7 +7,7 @@ def fwt(f):
     """
     wf = []
     for x in f:
-        print len(f)
+        print(len(f))
         if x == 0:
             wf.append(1)
         else: # Assume a proper truth table of only 1 or 0 entries
@@ -23,7 +23,7 @@ def fwt(f):
             ri = li + sw
             for p in range(0, sw):
                 a = wf[li]
-                for i in range(0,len(wf)): print(i,wf[i]) # Comment
+                for i in range(0,len(wf)): print((i,wf[i])) # Comment
                 b = wf[ri]
                 wf[li] = a + b
                 wf[ri] = a - b
@@ -36,11 +36,11 @@ def fwt(f):
     return wf
 
 def bf_nonlinearity(f, n):
-    """ Intermediate non linearity """
-    fw = fwt(f)
+	""" Intermediate non linearity """
+	fw = fwt(f)
     for i in range(len(fw)):
-        fw[i] = abs(fw[i])
-    return ((2**(n-1)) - (max(fw) / 2)) # nonlinearity from the Walsh transform
+    	fw[i] = abs(fw[i])
+	return ((2**(n-1)) - (max(fw) / 2)) # nonlinearity from the Walsh transform
 
 def nonlinearity(S):
     """ Outputs the nonlinearity of the s box """
@@ -54,11 +54,11 @@ def nonlinearity(S):
             for i in range(0, n):
                 if ((mask & (1 << i)) > 0) and ((S[x] & (1 << i)) > 0):
                     s = s ^ 1;
-        f.append(s)
-    print(f) # Comment
-    bfnl = bf_nonlinearity(f, n)
-    if (bfnl < nl):
-        nl = bfnl
+        	f.append(s)
+    		print(f) # Comment
+	    bfnl = bf_nonlinearity(f, n)
+	    if (bfnl < nl):
+	        nl = bfnl
     return nl
 
 def is_bijective(s):
