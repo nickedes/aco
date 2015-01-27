@@ -21,17 +21,17 @@ x = Decimal(15961)/Decimal(29589)
 u  = Decimal(39999999999999999999)/Decimal(10000000000000000000)
 b = Decimal(4999999999999999999)/Decimal(10000000000000000000)
 
-print x
-print u
-print b
+print(x)
+print(u)
+print(b)
 
 # Iterate over Chaotic Logistic Map
 x = chaotic(x, u, 50)
-print x
+#print(x)
 
 # Iterate over Tent Map
 x = tent(x, b, 50)
-print x
+#print(x)
 
 # Generate S Box
 s = []
@@ -41,8 +41,8 @@ while len(s) < 256:
     #n = randint(0,255)
     n = int(floor(256*x))
     if n not in s:
-        print len(s)
-        print s
+        #print(len(s))
+        #print(s)
         s.append(n)
 
-print pretty(s)
+print(pretty(s))
