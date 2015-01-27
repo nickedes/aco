@@ -15,7 +15,7 @@ def tent(x, b, count):
         elif b < x and x < 1:
             x = (1-x)/(1-b)
         else:
-            print "Something wrong at Tent Map"
+            print("Something wrong at Tent Map")
     return x
 
 
