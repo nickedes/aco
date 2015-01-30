@@ -45,7 +45,7 @@ while len(s) < 256:
 		# print len(s)
         # print s
         s.append(n)
-      
+        
 print((pretty(s)))
 
 print((is_bijective(s))) 
