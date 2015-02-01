@@ -40,8 +40,8 @@ def generate_sbox():
     while len(s) < 256:
 ##        t1 = int((float(x*(10**6)) - floor(x*(10**6)))*25)
 ##        t2 = int((float(x*(10**6)) - floor(x*(10**6)))*14)
-        x = chaotic(x, u, 25)
-        x = tent(x, b, 14)
+        x = chaotic(x, u, 30)
+        x = tent(x, b, 15)
         #n = int(floor(256*x))
         n = int((float(x*(10**6)) - floor(x*(10**6)))*256)
         if n not in s:

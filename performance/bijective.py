@@ -1,8 +1,6 @@
 # -*- coding: utf-8 -*-
 """
 Created on Sun Feb  1 17:13:11 2015
-
-@author: Zishan Ahmad
 """
 
 def is_bijective(s):

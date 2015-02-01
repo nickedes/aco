@@ -1,8 +1,6 @@
 # -*- coding: utf-8 -*-
 """
 Created on Sun Feb  1 16:36:00 2015
-
-@author: Zishan Ahmad
 """
 
 
