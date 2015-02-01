@@ -1,11 +1,28 @@
 from .nonlinearity1 import nonlinearity
+from .bijective import is_bijective
+from scipy.linalg import hadamard
 
-def is_bijective(s):
-	""" Checks if the s box is bijective """
-	for i in range(len(s)):
-		if i not in s:
-			return False
-	return True
+def walsh_spectrum(f):
+    x = f*hadamard(256)
+    length = len(x)
+    walsh = []
+    for i in range(1,length):
+        length_of_list=len(x[i])
+        sum = 0
+        for j in range(length_of_list):
+            sum = sum + x[i][j]
+        walsh.append(sum)
+    return walsh
+
+
+def bf_nonlinearity(f, n):
+    """ Intermediate non linearity """
+    #fw = fwt(f)
+    fw = walsh_spectrum(f)
+    for i in range(len(fw)):
+        fw[i] = abs(fw[i])
+    # nonlinearity from the Walsh transform
+    return ((2 ** (n - 1)) - (max(fw) / 2))
 
 
 def bitlist(val):

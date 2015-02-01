@@ -4,7 +4,6 @@ Created on Sun Feb  1 16:36:00 2015
 
 @author: Zishan Ahmad
 """
-from scipy.linalg import hadamard
 
 
 def fwt(f):
@@ -30,8 +29,6 @@ def fwt(f):
             ri = li + sw
             for p in range(0, sw):
                 a = wf[li]
-                for i in range(0, len(wf)):
-                    print((i, wf[i]))  # Comment
                 b = wf[ri]
                 wf[li] = a + b
                 wf[ri] = a - b
@@ -43,27 +40,11 @@ def fwt(f):
             break
     return wf
 
-def walsh_spectrum(f):
-    x = f*hadamard(256)
-    length = len(x)
-    walsh = []
-    for i in range(1,length):
-        length_of_list=len(x[i])
-        sum = 0
-        for j in range(length_of_list):
-            sum = sum + x[i][j]
-        walsh.append(sum)
-    return walsh
-
-def bf_nonlinearity(f, n):
-    """ Intermediate non linearity """
-    #fw = fwt(f)
-    fw = walsh_spectrum(f)
+def bf_nonlinearity(f,n):
+    fw = fwt(f)
     for i in range(len(fw)):
         fw[i] = abs(fw[i])
-    # nonlinearity from the Walsh transform
-    return ((2 ** (n - 1)) - (max(fw) / 2))
-
+    return ((2**(n-1)) - (max(fw) / 2))
 
 def nonlinearity(S):
 	""" Outputs the nonlinearity of the s box """
@@ -78,7 +59,6 @@ def nonlinearity(S):
 				if ((mask & (1 << i)) > 0) and ((S[x] & (1 << i)) > 0):
 					s = s ^ 1;
 			f.append(s)
-			# print(f) # Comment
 		bfnl = bf_nonlinearity(f, n)
 		if (bfnl < nl):
 			nl = bfnl
