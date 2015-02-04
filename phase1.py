@@ -38,10 +38,8 @@ def generate_sbox():
     # Generate S Box
     s = []
     while len(s) < 256:
-##        t1 = int((float(x*(10**6)) - floor(x*(10**6)))*25)
-##        t2 = int((float(x*(10**6)) - floor(x*(10**6)))*14)
-        x = chaotic(x, u, 30)
-        x = tent(x, b, 15)
+        x = chaotic(x, u, 25) #25
+        x = tent(x, b, 14) #14 
         #n = int(floor(256*x))
         n = int((float(x*(10**6)) - floor(x*(10**6)))*256)
         if n not in s:
@@ -111,16 +109,19 @@ s3 = [240,136,196,3,97,186,117,49,180,146,36,209,14,21,12,39,
       223,191,29,138,242,224,239,42,247,35,168,58,246,145,185,48, 
       26,214,166,16,114,200,127,226,57,165,84,103,220,11,27,152]
       
-s = generate_sbox()
-print(s)
-print(pretty(s))
-print(is_bijective(s))
-print((nonlinearity(s)))
-s = test_nonlinearity(s)
-x=0
-print(s)
-for i in s:
-    x += i
-    
-x /= len(s)
-print("Non linearity: {}" . format(x))
+#s = generate_sbox()
+#print(s)
+#print(pretty(s))
+#print(is_bijective(s))
+#print(differential_probability(s))
+#print((nonlinearity(s)))
+#s = test_nonlinearity(s)
+#x=0
+#print(s)
+#for i in s:
+#    x += i
+#    
+#x /= len(s)
+#print("Non linearity: {}" . format(x))
+print(pretty(s3))
+nonlinearity(s3)
