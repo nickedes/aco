@@ -49,13 +49,15 @@ def generate_sbox():
     return s
 
 
-#if __name__ == '__main__':
-#    s = generate_sbox()
-#    print(pretty(s))
-#    print(is_bijective(s))
+if __name__ == '__main__':
+    s = generate_sbox()
+    print(pretty(s))
+    print(is_bijective(s))
+    nonlinearity(s)
 
+
+# Sample SBoxes to check nonlinearity code
 #Mean: 107.5
-
 s1 = [78,224,103,81,237,62,159,185,93,96,90,222,232,252,66,154,
      0,43,213,28,246,8,84,22,238,83,92,184,58,211,99,233,
      181,161,210,56,19,130,30,152,157,190,162,163,141,167,12,245,
@@ -109,19 +111,8 @@ s3 = [240,136,196,3,97,186,117,49,180,146,36,209,14,21,12,39,
       223,191,29,138,242,224,239,42,247,35,168,58,246,145,185,48, 
       26,214,166,16,114,200,127,226,57,165,84,103,220,11,27,152]
       
-#s = generate_sbox()
-#print(s)
-#print(pretty(s))
-#print(is_bijective(s))
-#print(differential_probability(s))
-#print((nonlinearity(s)))
-#s = test_nonlinearity(s)
-#x=0
-#print(s)
-#for i in s:
-#    x += i
-#    
-#x /= len(s)
-#print("Non linearity: {}" . format(x))
-print(pretty(s3))
-nonlinearity(s3)
+s = generate_sbox()
+print(pretty(s))
+print(is_bijective(s))
+print(differential_probability(s))
+nonlinearity(s)
