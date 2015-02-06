@@ -20,10 +20,7 @@ def tent(x, b, count):
 
 
 def pretty(sbox):
-    """ Return a pretty printed SBox.
-        This function is a modified version of the one coded by Shadab Zafar
-        Refer: https://github.com/dufferzafar/substitute/blob/master/core/__init__.py
-    """
+    """ Return a pretty printed SBox """
 
     # List of Columns
     p = '\n       '
@@ -33,15 +30,14 @@ def pretty(sbox):
 
     for i in range(85):
         p += '-'
-    p += '\n'
+    
 
-    # Row
-    for i in range(16):
-        p += '%02d' % i + '  |  '
-
-        # Entries
-        for j in range(16):
-            p += '%03d' % sbox[i*15 + j] + '  '
-        p += '\n'
-
+    # Pretty Values
+    k=0    
+    for i in range(256):
+        if i%16 == 0:
+            p += '\n%02d' % k + '  |  '
+            k += 1
+        p += '%03d' % sbox[i] + '  '
+    
     return p.upper()

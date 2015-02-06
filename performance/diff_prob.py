@@ -19,8 +19,13 @@ def differential_probability(sbox):
     
     for x in range(size):
         for y in range(size):
+            if x == y:
+                continue
             ddt[x ^ y][sbox[x] ^ sbox[y]] += 1
+            print(ddt[x ^ y][sbox[x] ^ sbox[y]], end=' ')
+        print()
    
+    #print(ddt)
     # The top-left value is always 16
     # and is ignored during the analysis.
     ddt[0][0] = 0
