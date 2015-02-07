@@ -13,15 +13,15 @@ from math import floor
 from functions import *
 from performance import *
 
-def generate_sbox():
+def generate_sbox(num,den):
     # Set precision to 20
     getcontext().prec = 15
 
     # Define intital/constant values
-    x = Decimal(15961)/Decimal(29589)
+    x = Decimal(num)/Decimal(den)
     u  = Decimal(3999)/Decimal(1000)
     b = Decimal(4999)/Decimal(10000)
-
+    print(x,u,b)
     # To counter Transient Effect
     # Iterate over Chaotic Logistic Map
     x = chaotic(x, u, 50)
@@ -34,7 +34,7 @@ def generate_sbox():
     # Generate S Box
     s = []
     while len(s) < 256:
-        x = chaotic(x, u, 25) #25
+        x = chaotic(x, u, 24) #25
         x = tent(x, b, 14) #14 
         #n = int(floor(256*x))
         n = int((float(x*(10**6)) - floor(x*(10**6)))*256)
@@ -46,8 +46,13 @@ def generate_sbox():
 
 
 if __name__ == '__main__':
-    s = generate_sbox()    
+    num = 20821
+    den = 27729
+    nn = []
+    s = generate_sbox(num,den)    
     print(pretty(s))
     print(is_bijective(s))
     print(differential_probability(s))
-    nonlinearity(s)
+    nn.append(nonlinearity(s))
+    max_non=max(nn)
+    print(max_non)
