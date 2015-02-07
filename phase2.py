@@ -19,4 +19,4 @@ def create_matrix(sbox):
             mat[x ^ y][sbox[x] ^ sbox[y]] += 1
     
     mat[0][0] = 0
-    print(mat)
+    return mat

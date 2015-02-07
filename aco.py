@@ -6,4 +6,4 @@ s = generate_sbox()
 
 print(pretty(s))
 
-create_matrix(s)
+mat = create_matrix(s)
