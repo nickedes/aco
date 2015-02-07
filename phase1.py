@@ -21,7 +21,7 @@ def generate_sbox(num,den):
     x = Decimal(num)/Decimal(den)
     u  = Decimal(3999)/Decimal(1000)
     b = Decimal(4999)/Decimal(10000)
-    #print(x,u,b)
+    print(x,u,b)
     # To counter Transient Effect
     # Iterate over Chaotic Logistic Map
     x = chaotic(x, u, 50)
@@ -46,32 +46,13 @@ def generate_sbox(num,den):
 
 
 if __name__ == '__main__':
-    num = 15961
-    den = 29589
+    num = 20821
+    den = 27729
     nn = []
-    nume = []
-    deno = []
-    x_num=50
-    x_den=10
-    m=10
-    n=10
-    for i in range(4):
-        print(i)
-        for x in range(50):
-            s = generate_sbox(num,den)    
-            #print(pretty(s))
-            #print(is_bijective(s))
-            #print(differential_probability(s))
-            nn.append(nonlinearity(s))
-            nume.append(num)
-            deno.append(den)
-            num = num + x_num
-            den = den - x_den
-        x_num = x_num-m
-        x_den = x_den+n  
+    s = generate_sbox(num,den)    
+    print(pretty(s))
+    print(is_bijective(s))
+    print(differential_probability(s))
+    nn.append(nonlinearity(s))
     max_non=max(nn)
     print(max_non)
-    index=nn.index(max_non)
-    print(index)
-    print(nume[index])
-    print(deno[index])
