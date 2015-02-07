@@ -53,16 +53,25 @@ if __name__ == '__main__':
     deno = []
     x_num=50
     x_den=10
-    for x in range(50):
-        s = generate_sbox(num,den)    
-        #print(pretty(s))
-        #print(is_bijective(s))
-        #print(differential_probability(s))
-        nn.append(nonlinearity(s))
-        nume.append(num)
-        deno.append(den)
-        num = num + x_num
-        den = den - x_den
+    m=10
+    n=10
+    for i in range(4):
+        print(i)
+        for x in range(50):
+            s = generate_sbox(num,den)    
+            #print(pretty(s))
+            #print(is_bijective(s))
+            #print(differential_probability(s))
+            nn.append(nonlinearity(s))
+            nume.append(num)
+            deno.append(den)
+            num = num + x_num
+            den = den - x_den
+        x_num = x_num-m
+        x_den = x_den+n  
     max_non=max(nn)
     print(max_non)
-    print(nn.index(max_non))
+    index=nn.index(max_non)
+    print(index)
+    print(nume[index])
+    print(deno[index])
