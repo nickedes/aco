@@ -13,11 +13,13 @@ from math import floor
 from functions import *
 from performance import *
 
-def generate_sbox(num,den):
-    # Set precision to 20
+def generate_sbox():    
+    # Set precision to 15
     getcontext().prec = 15
 
     # Define intital/constant values
+    num = 20821
+    den = 27729
     x = Decimal(num)/Decimal(den)
     u  = Decimal(3999)/Decimal(1000)
     b = Decimal(4999)/Decimal(10000)
@@ -46,10 +48,8 @@ def generate_sbox(num,den):
 
 
 if __name__ == '__main__':
-    num = 20821
-    den = 27729
     nn = []
-    s = generate_sbox(num,den)    
+    s = generate_sbox()    
     print(pretty(s))
     print(is_bijective(s))
     print(differential_probability(s))
