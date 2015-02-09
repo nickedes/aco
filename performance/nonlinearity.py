@@ -45,5 +45,5 @@ def nonlinearity(box):
         asum = asum + nn[cols - 1 - hh]
 
     avg = asum/cols
-    #print(nn)
+    print(nn)
     return avg

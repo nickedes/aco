@@ -10,6 +10,3 @@ print(pretty(s))
 mat = create_matrix(s)
 
 x = run_aco(mat)
-
-x[1][255] = 58
-print(x[1][255])

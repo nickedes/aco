@@ -6,6 +6,11 @@ This is the optimization phase. The edge matrix generated in phase 2 will be
 optimized for differential probablity using Ant Colony Optimization.
 """
 
+class Ant:
+    tour_length = 0      # Ant's tour length
+    tour = [0] * 257     # Ant's memory storing tours
+    visited = [0] * 256  # Visited cities
+
 def construct_ant_solution():
     """
         ConstructAntsSolutions manages a colony of ants that concurrently and 
@@ -54,8 +59,29 @@ def run_aco(dist):
     """
         Run ACO using ACS on the adjacency matrix
     """
-    nlist = [[0 for j in range(256)] for i in range(256)]     # Nearest neighbour matrix
-    pheromone = [[5 for j in range(256)] for i in range(256)] # Initial Pheromone Setup
-    choice_info = [[]]
-    return nlist
+    nlist = [[] for i in range(256)]       # Nearest neighbour matrix
+    pheromone = [[5 for j in range(256)] for i in range(256)]   # Initial Pheromone Setup
+    choice_info = [[0 for j in range(256)] for i in range(256)] # Combined pheromone and heuristic value
+    a = [Ant() for i in range(5)]
+    alpha = 1    
+    beta = 2
+    # Data Initialization
+    # nlist contains indices in ascending order of the nodes in terms of DP
+    for i in range(256):
+        b = {}
+        for m,n in enumerate(dist[i]):
+            b[n] = []
+        for m,n in enumerate(dist[i]):
+            b[n].append(m)
+        for m in b:
+            for n in b[m]:
+                nlist[i].append(n)
     
+    for i in range(256):
+        for j in range(256):
+            if dist[i][j] == 0:
+                eta = 1/0.00001
+            else:
+                eta = 1/dist[i][j]
+            choice_info[i][j] = (pheromone[i][j]**alpha)*(eta**beta)
+    return choice_info
