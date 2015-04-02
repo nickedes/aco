@@ -26,5 +26,7 @@ def differential_probability(sbox):
     # The top-left value is always 16
     # and is ignored during the analysis.
     ddt[0][0] = 0
+    return ddt
     # Find maximum of the matrix
-    return max([max(row) for row in ddt])
+    # return max([max(row) for row in ddt])
+    # return max([max(row) for row in ddt])
